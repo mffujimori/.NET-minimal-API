@@ -1,0 +1,6 @@
+@Random_Forest_HostAddress = http://localhost:5276
+
+GET {{Random_Forest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

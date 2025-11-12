@@ -1,0 +1,23 @@
+﻿version: '3.8'
+
+services:
+  # 1. Serviço do PostgreSQL
+  db:
+    image: postgres:16-alpine # Recomenda-se usar uma versão específica e a tag 'alpine' (mais leve)
+    container_name: postgres-db-random-forest
+    restart: always
+    environment:
+      # Variáveis de ambiente OBRIGATÓRIAS para a imagem oficial do Postgres
+      POSTGRES_USER: adminRF # O usuário que você usará na conexão (o padrão é 'postgres')
+      POSTGRES_PASSWORD: xpto # A senha que você usará na conexão
+      POSTGRES_DB: TFC-LIFE-VIDAS # O nome do banco de dados inicial
+    ports:
+      # Mapeamento de portas: <Porta_na_sua_máquina>:<Porta_no_container>
+      - "5432:5432"
+    volumes:
+      # Isso garante que seus dados sejam persistentes mesmo que o container seja parado ou recriado
+      - postgres_data:/var/lib/postgresql/data
+
+# Definição dos Volumes
+volumes:
+  postgres_data:  
